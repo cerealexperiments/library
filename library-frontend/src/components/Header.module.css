@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: semibold;
+}
+
+.logoLink,
+.logoLink:link,
+.logoLink:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navLink,
+.navLink:link,
+navLink:visited {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.buttonsBox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.search {
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 10px 30px 10px 15px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}
+
+.search:focus {
+  outline: none;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.createAccount {
+  background-color: transparent;
+  padding: 10px 15px;
+  border: 2px solid black;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}

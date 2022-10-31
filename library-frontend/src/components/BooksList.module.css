@@ -1,0 +1,7 @@
+.booksList {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
