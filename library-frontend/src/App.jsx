@@ -11,7 +11,7 @@ function App() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/books")
+    fetch("http://localhost:9090/api/v1/books/find-all")
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
