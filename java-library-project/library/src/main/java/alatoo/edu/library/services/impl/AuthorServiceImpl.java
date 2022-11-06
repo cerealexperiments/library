@@ -6,6 +6,7 @@ import alatoo.edu.library.exceptions.NotFoundByIdException;
 import alatoo.edu.library.mappers.AuthorMapper;
 import alatoo.edu.library.mappers.BookMapper;
 import alatoo.edu.library.models.dto.AuthorDto;
+import alatoo.edu.library.models.entities.Author;
 import alatoo.edu.library.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,8 +38,20 @@ public class AuthorServiceImpl implements AuthorService {
         return map().toDtoList(repo.findAll());
     }
 
+    @Override
+    public AuthorDto findByName(String name) {
+        Author author = repo.findByName(name);
+        System.out.println("Before" + author);
+        if (author == null){
+            author = new Author();
+            author.setName(name);
+            author = repo.save(author);
+            System.out.println(author);
+        }
+        return map().toDto(author);
+    }
+
     public AuthorMapper map() {
-        AuthorMapper mapper = new AuthorMapper();
-        return mapper;
+        return new AuthorMapper();
     }
 }

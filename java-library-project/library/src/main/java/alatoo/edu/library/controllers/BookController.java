@@ -1,6 +1,7 @@
 package alatoo.edu.library.controllers;
 
 import alatoo.edu.library.models.dto.BookDto;
+import alatoo.edu.library.models.input_dtos.InputBookDto;
 import alatoo.edu.library.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,13 @@ public class BookController implements BaseCrudController<BookDto,Long>{
     private BookService service;
 
     @PostMapping("/save-book")
-    public ResponseEntity<BookDto> save(@RequestBody BookDto bookDto) {
-        return new ResponseEntity<>(service.save(bookDto), HttpStatus.CREATED);
+    public ResponseEntity<BookDto> save(@RequestBody InputBookDto inputBookDto) {
+        return new ResponseEntity<>(service.saveInputBookDto(inputBookDto), HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<BookDto> save(BookDto bookDto) {
+        return null;
     }
 
     @Override

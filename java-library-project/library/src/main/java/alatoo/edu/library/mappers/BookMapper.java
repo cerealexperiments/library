@@ -19,6 +19,11 @@ public class BookMapper implements BaseMapper <BookDto, Book>{
                 .Builder().build();
 
         mapperFactory.classMap(BookDto.class, Book.class)
+                .field("authorDto", "author")
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(AuthorDto.class, Author.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }
