@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReaderRepo extends JpaRepository<Reader,Long> {
+    Reader findByLogin(String login);
 }
