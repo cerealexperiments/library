@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LibrarianRepo extends JpaRepository<Librarian,Long> {
+    Librarian findByLogin(String login);
 }
