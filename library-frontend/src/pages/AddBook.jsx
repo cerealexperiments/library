@@ -16,10 +16,11 @@ function AddBook() {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        author_id: 1,
         name: title,
-        image_url: imgUrl,
+        author: author,
+        imgUrl: imgUrl,
         price: price,
+        id: 6,
       })
     }).then(response => {
       console.log(response);
