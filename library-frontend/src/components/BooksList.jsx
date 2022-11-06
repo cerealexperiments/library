@@ -11,7 +11,7 @@ function BooksList({ books }) {
             name={book.name}
             author={book.author}
             price={book.price}
-            imgUrl={book.imgUrl}
+            imgUrl={book.image_url}
             key={book.name}
           />
         );

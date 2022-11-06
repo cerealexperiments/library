@@ -10,7 +10,7 @@ function AddBook() {
   const [price, setPrice] = useState("");
 
   const addBook = () => {
-    fetch("http://localhost:3000/books", {
+    fetch("http://localhost:9090/api/v1/books/save-book", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
