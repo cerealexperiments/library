@@ -3,6 +3,7 @@ package alatoo.edu.library.services.impl;
 import alatoo.edu.library.dao.BookRepo;
 import alatoo.edu.library.exceptions.NotFoundByIdException;
 import alatoo.edu.library.mappers.BookMapper;
+import alatoo.edu.library.models.dto.AuthorDto;
 import alatoo.edu.library.models.dto.BookDto;
 import alatoo.edu.library.models.dto.ImageDto;
 import alatoo.edu.library.models.entities.Book;
@@ -25,19 +26,30 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private AuthorService authorService;
 
-    public BookDto saveInputBookDto(InputBookDto inputBookDto){
+    public InputBookDto saveInputBookDto(InputBookDto inputBookDto){
         BookDto bookDto = new BookDto();
-        bookDto.setAuthorDto(authorService.findByName(inputBookDto.getAuthorName()));
+        AuthorDto authorDto = authorService.findByName(inputBookDto.getAuthorName());
+
+        bookDto.setAuthorDto(authorDto);
         bookDto.setName(inputBookDto.getName());
         bookDto.setPublishing_date(inputBookDto.getPublishing_date());
         bookDto.setGenre(inputBookDto.getGenre());
         bookDto.setPrice(inputBookDto.getPrice());
         bookDto = save(bookDto);
+
         ImageDto imageDto = new ImageDto();
         imageDto.setBookDto(bookDto);
         imageDto.setUrl(inputBookDto.getImageUrl());
-        imageService.save(imageDto);
-        return bookDto;
+        imageDto = imageService.save(imageDto);
+
+        InputBookDto inputBookDtoOutput = new InputBookDto();
+        inputBookDtoOutput.setGenre(bookDto.getGenre());
+        inputBookDtoOutput.setName(bookDto.getName());
+        inputBookDtoOutput.setPrice(bookDto.getPrice());
+        inputBookDtoOutput.setPublishing_date(bookDto.getPublishing_date());
+        inputBookDtoOutput.setAuthorName(authorDto.getName());
+        inputBookDtoOutput.setImageUrl(imageDto.getUrl());
+        return inputBookDtoOutput;
     }
 
     @Override
