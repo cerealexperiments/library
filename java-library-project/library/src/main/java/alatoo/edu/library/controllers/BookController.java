@@ -17,7 +17,7 @@ public class BookController implements BaseCrudController<BookDto,Long>{
     private BookService service;
 
     @PostMapping("/save-book")
-    public ResponseEntity<BookDto> save(@RequestBody InputBookDto inputBookDto) {
+    public ResponseEntity<InputBookDto> save(@RequestBody InputBookDto inputBookDto) {
         return new ResponseEntity<>(service.saveInputBookDto(inputBookDto), HttpStatus.CREATED);
     }
 
