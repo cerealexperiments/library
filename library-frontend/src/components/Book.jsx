@@ -1,8 +1,17 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 function Book({ book }) {
+
+  const navigate = useNavigate();
+  const navigateToBook = (bookId) => {
+    navigate(`/books/${bookId}`);
+  }
+
   return (
-    <div className="card w-64 bg-base-100 shadow-xl">
+    <div onClick={() => {
+      navigateToBook(book.id);
+    }} className="card w-64 bg-base-100 shadow-xl">
       <figure><img className="w-full h-56  object-cover object-top" src={book.image_url} alt="book cover"/></figure>
       <div className="card-body">
         <h2 className="card-title flex justify-between text-base">
