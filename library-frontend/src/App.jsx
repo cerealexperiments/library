@@ -1,4 +1,3 @@
-import Header from "./components/Header.jsx";
 import {Routes, Route} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home.jsx";
@@ -7,6 +6,7 @@ import About from "./pages/About.jsx";
 import Books from "./pages/Books.jsx";
 import BookPage from "./pages/BookPage.jsx";
 import {BooksProvider} from "./context/BooksContext.jsx";
+import Header from "./components/Header.jsx";
 
 function App() {
   const client = new QueryClient({});
