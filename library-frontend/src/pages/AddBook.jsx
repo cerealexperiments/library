@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
 function AddBook() {
 
@@ -18,43 +19,46 @@ function AddBook() {
 
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [genre, setGenre] = useState("");
 
   return (
-    <div>
+    <motion.div
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}>
       <h1 className={"text-xl font-semibold"}>Add Book</h1>
       <div className="flex flex-col pt-6 gap-2 mb-6">
         <div>
           <label className="label">
             <span className="label-text">Title</span>
           </label>
-          <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Enter title" className="input input-bordered w-full max-w-xs" />
+          <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Enter title" className="input input-bordered w-full max-w-xs focus:outline-none" />
         </div>
         <div>
           <label className="label">
             <span className="label-text">Author</span>
           </label>
-          <input onChange={(e) => setAuthor(e.target.value)} value={author} type="text" placeholder="Enter author's name" className="input input-bordered w-full max-w-xs" />
+          <input onChange={(e) => setAuthor(e.target.value)} value={author} type="text" placeholder="Enter author's name" className="input input-bordered w-full max-w-xs focus:outline-none" />
         </div>
         <div>
           <label className="label">
             <span className="label-text">Price</span>
           </label>
-          <input onChange={(e) => setPrice(Number(e.target.value))} value={price} type="number" placeholder={`Enter price`} className="input input-bordered w-full max-w-xs" />
+          <input onChange={(e) => setPrice(Number(e.target.value))} value={price} type="number" placeholder={`Enter price`} className="input input-bordered w-full max-w-xs focus:outline-none" />
         </div>
         <div>
           <label className="label">
             <span className="label-text">Image (url)</span>
           </label>
-          <input onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} type="url" placeholder="Enter image URL" className="input input-bordered w-full max-w-xs" />
+          <input onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} type="url" placeholder="Enter image URL" className="input input-bordered w-full max-w-xs focus:outline-none" />
         </div>
         <div>
           <label className="label">
             <span className="label-text">Genre</span>
           </label>
-          <select onChange={(e) => setGenre(e.target.value)} value={genre} className="select select-bordered w-full max-w-xs">
+          <select onChange={(e) => setGenre(e.target.value)} value={genre} className="select select-bordered w-full max-w-xs focus:outline-none">
             <option value={""} defaultValue={""}>Select genre</option>
             <option value={"action"}>Action</option>
             <option value={"adventure"}>Adventure</option>
@@ -67,7 +71,7 @@ function AddBook() {
       <button onClick={mutate} className="btn">Submit</button>
       {isLoading && <p>Performing Mutation...</p>}
       {isSuccess && <p>Mutation successful!</p>}
-    </div>
+    </motion.div>
   );
 }
 
