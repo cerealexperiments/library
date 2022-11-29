@@ -1,10 +1,9 @@
 package alatoo.edu.library.mappers;
 
-import alatoo.edu.library.models.dto.BookOperationDto;
+import alatoo.edu.library.models.dto.BookDto;
 import alatoo.edu.library.models.dto.ImageDto;
-import alatoo.edu.library.models.entities.BookOperation;
+import alatoo.edu.library.models.entities.Book;
 import alatoo.edu.library.models.entities.Image;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -19,7 +18,12 @@ public class ImageMapper implements BaseMapper<ImageDto, Image> {
         MapperFactory mapperFactory = new DefaultMapperFactory
                 .Builder().build();
 
-        mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+        mapperFactory.classMap(ImageDto.class, Image.class)
+                .field("bookDto", "book")
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(BookDto.class, Book.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }

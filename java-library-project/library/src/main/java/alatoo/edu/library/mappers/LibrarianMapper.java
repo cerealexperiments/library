@@ -1,10 +1,6 @@
 package alatoo.edu.library.mappers;
 
-import alatoo.edu.library.models.dto.BookOperationDto;
-import alatoo.edu.library.models.dto.ImageDto;
 import alatoo.edu.library.models.dto.LibrarianDto;
-import alatoo.edu.library.models.entities.BookOperation;
-import alatoo.edu.library.models.entities.Image;
 import alatoo.edu.library.models.entities.Librarian;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
@@ -20,7 +16,7 @@ public class LibrarianMapper implements BaseMapper<LibrarianDto, Librarian>{
         MapperFactory mapperFactory = new DefaultMapperFactory
                 .Builder().build();
 
-        mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+        mapperFactory.classMap(LibrarianDto.class, Librarian.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }

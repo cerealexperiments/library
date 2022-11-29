@@ -19,7 +19,7 @@ public class ReaderMapper implements BaseMapper<ReaderDto, Reader>{
         MapperFactory mapperFactory = new DefaultMapperFactory
                 .Builder().build();
 
-        mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+        mapperFactory.classMap(ReaderDto.class, Reader.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }

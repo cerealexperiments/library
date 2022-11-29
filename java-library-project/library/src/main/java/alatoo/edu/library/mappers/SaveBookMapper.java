@@ -19,7 +19,7 @@ public class SaveBookMapper implements BaseMapper<SaveBookDto, SaveBook>{
         MapperFactory mapperFactory = new DefaultMapperFactory
                 .Builder().build();
 
-        mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+        mapperFactory.classMap(SaveBookDto.class, SaveBook.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }
