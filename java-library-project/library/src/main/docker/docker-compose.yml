@@ -17,6 +17,9 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_MAIN_ALLOW_CIRCULAR_REFERENCES=true
       - SPRING_MVC_PATHMATCH_MATCHING_STRATEGY= ANT_PATH_MATCHER
+      # App Properties
+      - library.app.jwtSecret= bezKoderSecretKey
+      - library.app.jwtExpirationMs= 86400000
 
   db:
     image: 'postgres:13.1-alpine'

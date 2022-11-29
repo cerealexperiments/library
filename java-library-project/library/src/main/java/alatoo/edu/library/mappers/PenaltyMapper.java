@@ -19,7 +19,7 @@ public class PenaltyMapper implements BaseMapper<PenaltyDto, Penalty>{
         MapperFactory mapperFactory = new DefaultMapperFactory
                 .Builder().build();
 
-        mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+        mapperFactory.classMap(PenaltyDto.class, Penalty.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }
