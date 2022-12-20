@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 @Data
 public class BookOperationDto {
     private Long id;
-    private ReaderDto readerDto;
+    private UserDto userDto;
     private BookDto bookDto;
     private LocalDateTime start_date;
     private LocalDateTime end_date;
-    private OperationStatus operation_status;
+    private OperationStatus operationStatus;
     private double operation_price;
 }

@@ -14,8 +14,8 @@ public class BookOperation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "reader_id")
-    private Reader reader;
+    @JoinColumn(name = "user_id")
+    private User user;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
@@ -23,6 +23,6 @@ public class BookOperation {
     private LocalDateTime start_date;
     private LocalDateTime end_date;
     @Enumerated(EnumType.STRING)
-    private OperationStatus operation_status;
+    private OperationStatus operationStatus;
     private double operation_price;
 }

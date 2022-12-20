@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Data
 public class SaveBookDto {
     private Long id;
-    private ReaderDto readerDto;
+    private UserDto userDto;
     private BookDto bookDto;
-    private boolean is_favourite;
+    private boolean isFavourite;
+    private boolean isRead;
 }

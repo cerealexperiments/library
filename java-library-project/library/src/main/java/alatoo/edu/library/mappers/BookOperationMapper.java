@@ -2,8 +2,12 @@ package alatoo.edu.library.mappers;
 
 import alatoo.edu.library.models.dto.BookDto;
 import alatoo.edu.library.models.dto.BookOperationDto;
+import alatoo.edu.library.models.dto.SaveBookDto;
+import alatoo.edu.library.models.dto.UserDto;
 import alatoo.edu.library.models.entities.Book;
 import alatoo.edu.library.models.entities.BookOperation;
+import alatoo.edu.library.models.entities.SaveBook;
+import alatoo.edu.library.models.entities.User;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -19,6 +23,16 @@ public class BookOperationMapper implements BaseMapper<BookOperationDto, BookOpe
                 .Builder().build();
 
         mapperFactory.classMap(BookOperationDto.class, BookOperation.class)
+                .field("userDto", "user")
+                .field("bookDto", "book")
+                .field("userDto.roleDtos", "user.roles")
+                .field("bookDto.authorDto", "book.author")
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(UserDto.class, User.class)
+                .byDefault();
+        mapperFactory.classMap(BookDto.class, Book.class)
                 .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }
