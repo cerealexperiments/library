@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class InputBookDto {
     private String name;
-    private LocalDateTime publishing_date;
+    private int publishingDate;
     private String authorName;
     private double price;
     private BookGenre genre;

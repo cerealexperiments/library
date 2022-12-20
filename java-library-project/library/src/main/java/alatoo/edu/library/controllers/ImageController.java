@@ -6,6 +6,7 @@ import alatoo.edu.library.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ImageController implements BaseCrudController<ImageDto, Long>{
         return null;
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @GetMapping("/find-all")
     public ResponseEntity<List<ImageDto>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);

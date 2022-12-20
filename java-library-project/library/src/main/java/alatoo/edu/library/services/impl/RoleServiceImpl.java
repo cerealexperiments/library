@@ -49,7 +49,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleDto> findAll() {
-        return null;
+        return map().toDtoList(repo.findAll());
     }
 
     public RoleMapper map() {

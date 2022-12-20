@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class PenaltyDto {
     private Long id;
-    private ReaderDto readerDto;
+    private UserDto userDto;
     private LocalDateTime penalty_date;
 }

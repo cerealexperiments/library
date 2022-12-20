@@ -13,7 +13,7 @@ public class Penalty {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "reader_id")
-    private Reader reader;
+    @JoinColumn(name = "user_id")
+    private User user;
     private LocalDateTime penalty_date;
 }

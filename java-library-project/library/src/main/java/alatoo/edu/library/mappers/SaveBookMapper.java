@@ -1,10 +1,7 @@
 package alatoo.edu.library.mappers;
 
-import alatoo.edu.library.models.dto.BookOperationDto;
-import alatoo.edu.library.models.dto.SaveBookDto;
-import alatoo.edu.library.models.entities.BookOperation;
-import alatoo.edu.library.models.entities.Reader;
-import alatoo.edu.library.models.entities.SaveBook;
+import alatoo.edu.library.models.dto.*;
+import alatoo.edu.library.models.entities.*;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -20,7 +17,21 @@ public class SaveBookMapper implements BaseMapper<SaveBookDto, SaveBook>{
                 .Builder().build();
 
         mapperFactory.classMap(SaveBookDto.class, SaveBook.class)
+                .field("userDto", "user")
+                .field("bookDto", "book")
+                .field("userDto.roleDtos", "user.roles")
+                .field("bookDto.authorDto", "book.author")
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(UserDto.class, User.class)
                 .byDefault();
+        mapperFactory.classMap(BookDto.class, Book.class)
+                .byDefault();
+//        mapperFactory.classMap(RoleDto.class, Role.class)
+//                .byDefault();
+//        mapperFactory.classMap(AuthorDto.class, Author.class)
+//                .byDefault();
         mapperFacade = mapperFactory.getMapperFacade();
     }
 

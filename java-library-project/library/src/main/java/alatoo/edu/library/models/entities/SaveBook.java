@@ -3,7 +3,6 @@ package alatoo.edu.library.models.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -13,10 +12,11 @@ public class SaveBook {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "reader_id")
-    private Reader reader;
+    @JoinColumn(name = "user_id")
+    private User user;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
-    private boolean is_favourite;
+    private boolean isRead;
+    private boolean isFavourite;
 }

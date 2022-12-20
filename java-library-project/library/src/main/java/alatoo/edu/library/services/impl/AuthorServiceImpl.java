@@ -40,7 +40,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorDto findByName(String name) {
-        Author author = repo.findByName(name);
+        Author author = repo.findDistinctByName(name);
         System.out.println("Before" + author);
         if (author == null){
             author = new Author();
